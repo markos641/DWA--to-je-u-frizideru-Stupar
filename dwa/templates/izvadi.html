@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<title>Što je u frižideru</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <button class="w3-button w3-block w3-black" onclick="location.href='/';">POČETNA</button>
+    </div>
+    <div class="w3-col s3">
+	  <button class="w3-button w3-block w3-black" onclick="location.href='stanje';">ŠTO JE U FRIŽIDERU</button>
+    </div>
+    <div class="w3-col s3">
+	  <button class="w3-button w3-block w3-black" onclick="location.href='stavi';">STAVI U FRIŽIDER</button>
+    </div>
+    <div class="w3-col s3">
+	<button class="w3-button w3-block w3-black" onclick="location.href='izvadi';">IZVADI IZ FRIŽIDERA</button>
+    </div>
+  </div>
+</div>
+
+  <div class="w3-content" style="max-width:700px">
+   <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Izvadi iz frižidera</span></h5>
+    <p>Nakon što ste dobro proučili tablicu sa stranice "Što je u frižideru" te ste se odlučili što želite pojesti ovdje možete putem forme nešto izvaditi iz frižidera: </p>
+    <form method="POST" name="vform">
+	<p>Vadite iz frižidera koji se nalazi: </p>
+	  <p><label class="radio-inline"><input type="radio" name="cc" value=1> Kuhinji</label>
+			<label class="radio-inline"><input type="radio" name="cc" value=2> Dnevnom</label>
+			<label class="radio-inline"><input type="radio" name="cc" value=3> Konobi</label>
+			<label class="radio-inline"><input type="radio" name="cc" value=4> Garaži</label>
+			<label class="radio-inline"><input type="radio" name="cc" value=5> Balkonu</label></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Naziv artikla kojeg vadite" required name="naziv"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Količina koju želite uzeti" required name="koliko"</p>
+	  <p>Iz kojeg dijela frižidera vadite artikal: </p>
+      <p><label class="radio-inline"><input type="radio" name="hh" value=1> Običnog</label>
+			<label class="radio-inline"><input type="radio" name="hh"value=2> Leda</label></p>
+      <p><button class="w3-button w3-black" type="submit">Potvrdi unos i izvadi artikal iz frižidera</button></p>
+    </form>
+	{% with messages = get_flashed_messages() %}
+                {% if messages %}
+                
+                    <div class="d-flex justify-content-center" style="padding-bottom: 20px"  >
+                        {% for message in messages %}
+                        <font size="5">
+                            <p style="color:#008000 " >
+                                {{message}}
+                            </p>   
+                        </font>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>M. Stupar 2019 - DWA</p>
+</footer>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<title>Što je u frižideru</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+
+<style>
+body, html {
+  height: 100%;
+  font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+</style>
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <button class="w3-button w3-block w3-black" onclick="location.href='/';">POČETNA</button>
+    </div>
+    <div class="w3-col s3">
+	  <button class="w3-button w3-block w3-black" onclick="location.href='stanje';">ŠTO JE U FRIŽIDERU</button>
+    </div>
+    <div class="w3-col s3">
+	  <button class="w3-button w3-block w3-black" onclick="location.href='stavi';">DODAJ ARTIKAL/STAVI U FRIŽIDER</button>
+    </div>
+    <div class="w3-col s3">
+	<button class="w3-button w3-block w3-black" onclick="location.href='izvadi';">IZVADI IZ FRIŽIDERA</button>
+    </div>
+  </div>
+</div>
+
+ <div class="w3-content" style="max-width:700px">
+ 
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Što je u frižideru</span></h5>
+  <div class="w3-row w3-center w3-card">
+     <table class="darkTable">
+	 <tr>
+	 <th> Naziv artikla </th>
+	 <th> Tip artikla </th>
+	 <th> Količina artikla </th>
+	 <th> Broj police u frižideru  </th>
+	 <th> Tip police </th>
+	 <th> Lokacija frižidera </th>
+  {% for row in data %}
+  <tr>
+	<th> {{ row[0] }}</th>
+    <th> {{ row[1] }}</th>
+	<th> {{ row[2] }}</th>
+	<th> {{ row[3] }}</th>
+	<th> {{ row[4] }}</th>
+	<th> {{ row[5] }}</th>
+  </tr> 
+  {% endfor %}
+</table>
+    </div>
+  </div>
+
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>M. Stupar 2019 - DWA</p>
+</footer>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>
